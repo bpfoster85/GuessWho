@@ -9,29 +9,29 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-4">
             <h4>Ellinor Lorraine</h4>
             <ul>
-                <li>Name: Ellinor</li>
+                <li>Age: 8</li>
                 <li>Birthdate: 02/24/2011</li>
             </ul>
-            <img src="https://bike.shimano.com/content/dam/productsite/shimano-europe/img/square-banner/RIDING_STYLE/MTB-Enduro-Discipline-Icon.jpg" />
+            <img src="Images/Ellinor.jpg" />
         </div>
-        <div class="col-sm">
+        <div class="col-sm-4">
             <h4>Emrey Rae</h4>
             <ul>
-                <li>Name: Ellinor</li>
-                <li>Birthdate: 02/24/2011</li>
+                <li>Age: 6</li>
+                <li>Birthdate: 03/19/2013</li>
             </ul>
-            <img src="https://bike.shimano.com/content/dam/productsite/shimano-europe/img/square-banner/RIDING_STYLE/MTB-Enduro-Discipline-Icon.jpg" />
+            <img src="Images/Emrey.jpg" />
         </div>
-        <div class="col-sm">
+        <div class="col-sm-4">
             <h4>Quinton Paul</h4>
             <ul>
-                <li>Name: Ellinor</li>
-                <li>Birthdate: 02/24/2011</li>
+                <li>Age: 2</li>
+                <li>Birthdate: 02/24/2017</li>
             </ul>
-            <img src="https://bike.shimano.com/content/dam/productsite/shimano-europe/img/square-banner/RIDING_STYLE/MTB-Enduro-Discipline-Icon.jpg" />
+            <img src="Images/Quinton.jpg" />
         </div>
     </div>
     <div class="row">
@@ -51,13 +51,7 @@
                 </div>
             </form>
         </div>
-        @if (Model.FileUploaded)
-        {
-            <h1>Uplaoded</h1>
-        }
-        else
-        {
-            <h2>nope</h2>
-        }
+   
+        @Model.PredictionResults
     </div>
 </div>

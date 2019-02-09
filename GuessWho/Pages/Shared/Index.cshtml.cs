@@ -14,6 +14,7 @@ namespace GuessWho.Pages
 
         }
         public bool FileUploaded { get; set; }
+        public string PredictionResults { get; set; }
         public IndexModel()
         {
             FileUploaded = false;
