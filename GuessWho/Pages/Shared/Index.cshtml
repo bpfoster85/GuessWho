@@ -51,7 +51,14 @@
                 </div>
             </form>
         </div>
-   
-        @Model.PredictionResults
+        <table>
+@foreach (var r in Model.PredictionResults)
+   {
+       <tr>
+           <td>r.TageName</td>
+           <td>r.Probability</td>
+       </tr>
+   }
+   </table>
     </div>
 </div>
