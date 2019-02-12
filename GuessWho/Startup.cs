@@ -31,7 +31,7 @@ namespace GuessWho
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSingleton(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -54,8 +54,7 @@ namespace GuessWho
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-
+         
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -1,6 +1,7 @@
 ﻿using GuessWho.Pages;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace GuessWho.Controller
 {
     public class HomeController : Microsoft.AspNetCore.Mvc.Controller
     {
-        public IActionResult Index(IndexModel model)
+        public IActionResult Index(PredictionViewModel model)
         {
             return View(model);
         }
@@ -22,18 +23,11 @@ namespace GuessWho.Controller
         [HttpPost]
         public async Task<IActionResult> PictureUpload(IFormFile file)
         {
-
-            IndexModel model = new IndexModel();
+            PredictionViewModel model = new PredictionViewModel();
             model.FileUploaded = true;
-            byte[] imgBits;
-            using (var memoryStream = new MemoryStream())
-            {
+           model.ConvertImageFile(file);
 
-                await file.CopyToAsync(memoryStream);
-                imgBits = memoryStream.ToArray();
-            }
-
-            string results = await MakePredictionRequest(imgBits);
+            string results = await MakePredictionRequest(model.IMGBits);
             model.ParsePredictionResults(results);
 
             return RedirectToAction("Index", model);
@@ -44,7 +38,7 @@ namespace GuessWho.Controller
             string contentString;
             var client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("Prediction-Key", "");
+            client.DefaultRequestHeaders.Add("Prediction-Key", "1b0a1ced38fb427e9ceb1c20df4d316f");
             HttpResponseMessage response;
      
             using (var content = new ByteArrayContent(imageBits))
