@@ -35,7 +35,7 @@ namespace GuessWho.Pages
                 {
                     var prob = w.probability;
                     Prediction p = new Prediction();
-                    p.Probability = w.probability;
+                    p.Probability = (w.probability * 100).ToString("##.##") + "%";;
                     p.TagName = w.tagName;
                     this.PredictionResults.Add(p);
                 }

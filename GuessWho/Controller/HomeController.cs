@@ -17,6 +17,7 @@ namespace GuessWho.Controller
     {
         public IActionResult Index(PredictionViewModel model)
         {
+            ViewData["Results"] ="woot";
             return View(model);
         }
 
@@ -29,8 +30,7 @@ namespace GuessWho.Controller
 
             string results = await MakePredictionRequest(model.IMGBits);
             model.ParsePredictionResults(results);
-
-            return RedirectToAction("Index", model);
+            return View("Index", model);
         }
         static async Task<string> MakePredictionRequest(byte[] imageBits)
         {

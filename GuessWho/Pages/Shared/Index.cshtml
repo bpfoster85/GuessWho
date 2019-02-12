@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome To<br /> Azure Guess Who</h1>
+    <h1 class="display-4">Welcome To Azure Guess Who</h1>
     <p>Can Azure Cognitive Service: Vision guess the right person?</p>
 </div>
 <div class="container">
@@ -35,8 +35,8 @@
         </div>
     </div>
     <div class="row">
+        <hr />
         <div class="col-sm">
-            <hr />
             <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="PictureUpload">
                 <div class="form-group">
                     <div class="col-md-10">
@@ -51,14 +51,23 @@
                 </div>
             </form>
         </div>
-        <table>
-@foreach (var r in Model.PredictionResults)
-   {
-       <tr>
-           <td>r.TageName</td>
-           <td>r.Probability</td>
-       </tr>
-   }
-   </table>
+         <div class="col-sm">
+            
+            @if(Model.PredictionResults.Count > 0){
+        <table colspan=10>
+            <tr>
+                <th>Child</th>
+                <th>Probability</th>
+            </tr>
+            @foreach (var r in Model.PredictionResults)
+            {
+                <tr>
+                    <td>@r.TagName</td>
+                    <td>@r.Probability</td>
+                </tr>
+            }
+        </table>
+            }
+   </div>
     </div>
 </div>
